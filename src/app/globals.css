@@ -1,26 +1,113 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --color-space-950: #04050b;
+  --color-space-900: #080b16;
+  --color-space-850: #0c1122;
+  --color-space-800: #10182c;
+  --color-space-700: #1a2340;
+
+  --color-star: #f4f7ff;
+  --color-star-dim: #93a3c4;
+  --color-star-faint: #5b6a8f;
+
+  --color-accent: #7dd8ff;
+  --color-accent-strong: #bfeeff;
+  --color-accent-2: #9b8cff;
+
+  --background: var(--color-space-950);
+  --foreground: var(--color-star);
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+
+  --color-space-950: var(--color-space-950);
+  --color-space-900: var(--color-space-900);
+  --color-space-850: var(--color-space-850);
+  --color-space-800: var(--color-space-800);
+  --color-space-700: var(--color-space-700);
+
+  --color-star: var(--color-star);
+  --color-star-dim: var(--color-star-dim);
+  --color-star-faint: var(--color-star-faint);
+
+  --color-accent: var(--color-accent);
+  --color-accent-strong: var(--color-accent-strong);
+  --color-accent-2: var(--color-accent-2);
+
+  --font-display: var(--font-orbitron);
+  --font-sans: var(--font-space-grotesk);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+}
+
+::selection {
+  background: color-mix(in srgb, var(--color-accent) 35%, transparent);
+  color: var(--color-star);
+}
+
+/* Delicada línea de "brillo" para títulos y acentos */
+.text-glow {
+  text-shadow:
+    0 0 12px color-mix(in srgb, var(--color-accent) 55%, transparent),
+    0 0 28px color-mix(in srgb, var(--color-accent) 25%, transparent);
+}
+
+.star-dot {
+  filter: drop-shadow(0 0 6px color-mix(in srgb, var(--color-accent) 70%, transparent));
+}
+
+@keyframes twinkle {
+  0%,
+  100% {
+    opacity: 0.35;
+    transform: scale(0.85);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.1);
+  }
+}
+
+.twinkle {
+  animation: twinkle 3.2s ease-in-out infinite;
+}
+
+@keyframes drift-in {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.drift-in {
+  animation: drift-in 0.7s ease-out both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .twinkle,
+  .drift-in {
+    animation: none;
+  }
 }
