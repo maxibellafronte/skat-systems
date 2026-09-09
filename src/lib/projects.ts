@@ -10,15 +10,20 @@ export type Project = {
   status: "live" | "en-desarrollo" | "archivado";
 };
 
-// Placeholder de ejemplo: reemplazá estos valores por tus proyectos reales.
 // Los campos sin dato confirmado deben mostrarse en cursiva (ver ProjectCard),
-// nunca inventados ni vacíos.
+// nunca inventados ni vacíos. demoUrl/repoUrl quedan sin definir cuando la
+// decisión es "no va a tener" (ej. proyectos con datos reales de terceros),
+// no cuando el dato todavía falta — en ese caso el placeholder induciría a error.
 export const projects: Project[] = [
   {
-    id: "proyecto-ejemplo",
-    title: "acá va el nombre del proyecto",
-    description: "acá va una descripción corta de qué hace este proyecto",
-    tags: ["acá va el stack"],
-    status: "en-desarrollo",
+    id: "programacion-crossfit",
+    title: "Programación de CrossFit",
+    description:
+      "Plataforma para un box de CrossFit: la coach programa la semana por bloques y cada atleta la consulta, carga sus resultados de WOD y lleva registro de sus marcas personales. Incluye aprobación manual de altas.",
+    tags: ["React", "Vite", "Supabase", "Vercel"],
+    status: "live",
+    // Sin demoUrl/repoUrl a propósito: la app maneja datos reales de atletas.
+    // image: falta agregar una captura tomada con cuenta de prueba (sin
+    // nombres ni resultados reales de atletas).
   },
 ];

@@ -9,6 +9,7 @@ const STATUS_LABEL: Record<Project["status"], string> = {
 export default function ProjectCard({ project }: { project: Project }) {
   const isPlaceholderTitle = project.title.startsWith("acá va");
   const isPlaceholderDesc = project.description.startsWith("acá va");
+  const isPlaceholderDemo = project.demoUrl?.startsWith("acá va") ?? false;
 
   return (
     <article className="group relative flex flex-col overflow-hidden rounded-2xl border border-white/8 bg-space-900/60 transition-colors hover:border-accent/40">
@@ -63,30 +64,33 @@ export default function ProjectCard({ project }: { project: Project }) {
           })}
         </div>
 
-        <div className="mt-auto flex gap-4 pt-3 text-sm">
-          {project.demoUrl ? (
-            <a
-              href={project.demoUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-accent-strong transition-opacity hover:opacity-80"
-            >
-              Ver demo →
-            </a>
-          ) : (
-            <span className="italic text-star-faint">acá va el link a la demo</span>
-          )}
-          {project.repoUrl && (
-            <a
-              href={project.repoUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-star-dim transition-colors hover:text-accent-strong"
-            >
-              Código
-            </a>
-          )}
-        </div>
+        {(project.demoUrl || project.repoUrl) && (
+          <div className="mt-auto flex gap-4 pt-3 text-sm">
+            {project.demoUrl &&
+              (isPlaceholderDemo ? (
+                <span className="italic text-star-faint">{project.demoUrl}</span>
+              ) : (
+                <a
+                  href={project.demoUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-accent-strong transition-opacity hover:opacity-80"
+                >
+                  Ver demo →
+                </a>
+              ))}
+            {project.repoUrl && (
+              <a
+                href={project.repoUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-star-dim transition-colors hover:text-accent-strong"
+              >
+                Código
+              </a>
+            )}
+          </div>
+        )}
       </div>
     </article>
   );
