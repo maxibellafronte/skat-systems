@@ -19,7 +19,7 @@ export default function ProjectCard({ project }: { project: Project }) {
           <img
             src={project.image}
             alt={`Captura de ${project.title}`}
-            className="h-full w-full object-cover"
+            className="h-full w-full object-contain p-4 drop-shadow-[0_8px_24px_rgba(0,0,0,0.55)]"
           />
         ) : (
           <span className="font-display text-xs italic tracking-wide text-star-faint">

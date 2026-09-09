@@ -22,8 +22,7 @@ export const projects: Project[] = [
       "Plataforma para un box de CrossFit: la coach programa la semana por bloques y cada atleta la consulta, carga sus resultados de WOD y lleva registro de sus marcas personales. Incluye aprobación manual de altas.",
     tags: ["React", "Vite", "Supabase", "Vercel"],
     status: "live",
+    image: "/Captura-Romi-Plani.png",
     // Sin demoUrl/repoUrl a propósito: la app maneja datos reales de atletas.
-    // image: falta agregar una captura tomada con cuenta de prueba (sin
-    // nombres ni resultados reales de atletas).
   },
 ];
