@@ -13,18 +13,20 @@ export default function ProjectCard({ project }: { project: Project }) {
 
   return (
     <article className="group relative flex flex-col overflow-hidden rounded-2xl border border-white/8 bg-space-900/60 transition-colors hover:border-accent/40">
-      <div className="relative flex aspect-video items-center justify-center overflow-hidden border-b border-white/8 bg-[radial-gradient(circle_at_30%_20%,_var(--color-space-800),_var(--color-space-950))]">
+      <div className="relative overflow-hidden border-b border-white/8 bg-[radial-gradient(circle_at_30%_20%,_var(--color-space-800),_var(--color-space-950))]">
         {project.image ? (
           // eslint-disable-next-line @next/next/no-img-element
           <img
             src={project.image}
             alt={`Captura de ${project.title}`}
-            className="h-full w-full object-contain p-4 drop-shadow-[0_8px_24px_rgba(0,0,0,0.55)]"
+            className="block h-auto w-full"
           />
         ) : (
-          <span className="font-display text-xs italic tracking-wide text-star-faint">
-            acá va una captura del proyecto
-          </span>
+          <div className="flex aspect-video items-center justify-center">
+            <span className="font-display text-xs italic tracking-wide text-star-faint">
+              acá va una captura del proyecto
+            </span>
+          </div>
         )}
         <span
           aria-hidden="true"
